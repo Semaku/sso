@@ -70,7 +70,7 @@ type Options struct {
 	CookieHTTPOnly bool          `envconfig:"COOKIE_HTTP_ONLY"`
 
 	// These options allow for other providers besides Google, with potential overrides.
-	Provider string `envconfig:"PROVIDER" default:"google"`
+	Provider string `envconfig:"PROVIDER" default:"sso"`
 	Scope    string `envconfig:"SCOPE"`
 
 	SessionLifetimeTTL time.Duration `envconfig:"SESSION_LIFETIME_TTL" default:"720h"`
@@ -99,7 +99,7 @@ func NewOptions() *Options {
 	return &Options{
 		CookieName:             "_sso_proxy",
 		CookieSecure:           true,
-		CookieHTTPOnly:         true,
+		CookieHTTPOnly:         false,
 		CookieExpire:           time.Duration(168) * time.Hour,
 		SkipAuthPreflight:      false,
 		RequestLogging:         true,

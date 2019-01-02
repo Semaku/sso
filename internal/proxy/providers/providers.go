@@ -21,5 +21,11 @@ type Provider interface {
 
 // New returns a new sso Provider
 func New(provider string, p *ProviderData, sc *statsd.Client) Provider {
-	return NewSSOProvider(p, sc)
+
+	switch provider {
+	case "oidc":
+		return NewOIDCProvider(p, sc)
+	default:
+		return NewSSOProvider(p, sc)
+	}
 }

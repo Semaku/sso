@@ -83,7 +83,7 @@ func NewCookieStore(cookieName string, optFuncs ...func(*CookieStore) error) (*C
 	c := &CookieStore{
 		Name:           cookieName,
 		CookieSecure:   true,
-		CookieHTTPOnly: true,
+		CookieHTTPOnly: false,
 		CookieExpire:   168 * time.Hour,
 		CSRFCookieName: fmt.Sprintf("%v_%v", cookieName, "csrf"),
 	}
